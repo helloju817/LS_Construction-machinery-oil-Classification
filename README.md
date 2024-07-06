@@ -1,50 +1,60 @@
 <a name="top"></a>
+
 # 🏆 프로젝트: LS 건설기계 오일 상태 분류
 
 LS 빅데이터 교육과정에서 진행한 건설기계 오일 상태 분류 프로젝트 최종 결과물입니다. 본 프로젝트에서는 AutoML을 통해 우수한 모델을 찾고 이에 따른 Feature importance를 확인해 상위 20개를 선택하여 집중 분석하였습니다.
 
-### 📈 프로젝트 설명
-SMOTE 기법으로 데이터 불균형 해결 시, 오히려 F1 SCORE가 하락하는 이유?
-![image](https://github.com/helloju817/LS_Construction-machinery-oil-Classification/assets/76280200/9c47c85a-c7d6-47e2-af45-4dc2aa596668)
-<br>
-**이상치 처리 전후 모델링 결과**
-![image](https://github.com/helloju817/LS_Construction-machinery-oil-Classification/assets/76280200/1382b1f6-6d9b-4c71-a22f-cb5429415360)
-<br>
-**모델링 결론**
-- LightGBM (Light Gradient Boosting Machine): 경량화된 그래디언트 부스팅 모델
-- SVM (Support Vector Machine): 고차원 공간에서 최적의 초평면을 찾는 분류 모델         
-컴포넌트 1,2,3은 LightGBM을 사용하며, 4는 SVM를 진행하여 모델링을 진행
-  
 ## 📌 프로젝트 설명
-- 주조 공정은 금속을 녹여 액체로 만든 후 형에 부어 굳히는 가공 방식으로, 모래를 이용한 사형 주조, 금형을 이용한 다이캐스팅 등 여러 공정으로 세분화할 수 있습니다. 본 분석에 사용된 주조 공정 최적화 AI 데이터셋의 경우 다이캐스팅 공정을 의미합니다.       
-- 본 분석 과정을 통해 도출된 양품 및 불량 판정 모델을 통해 품질 예측을 달성하고, 더 나아가 모델이 양품과 불량을 분류하는 주요 변수와 그 값을 확인함으로써 주요 공정 변수에 대한 통제가 가능해집니다. 이를 통해 불량률을 줄이고 지속적인 양품 생산이 가능한 공정 최적화를 다이캐스팅 기업에 적용한다면, 불량을 크게 줄일 수 있을 것으로 판단됩니다.        
+건설 장비 내부 기계 부품의 마모 상태 및 윤활 성능을 오일 데이터 분석을 통해 확인하고, AI를 활용한 분류 모델 개발을 통해 적절한 교체 주기를 파악하고자 합니다.
+![프로젝트 이미지](https://github.com/helloju817/LS_Construction-machinery-oil-Classification/assets/76280200/1d6c699e-f3d2-4c1b-9b16-589c135cbcf0)
 
-## 📊 결론: Specificity
-- **COMPONENT1** : 0.7097
-- **COMPONENT2** : 0.7255
-- **COMPONENT3** : 0.6634
-- **COMPONENT4** : 0.4880 
-부품별로 데이터를 나눴을 때, COMPONENT1은 7050개, COMPONENT2는 3890개, COMPONENT3은 2316개, COMPONENT4는 839개로 COMPONENT4는 데이터 수가 현저히 적어 정확도 저하가 발생했습니다. 향후 데이터 수집 및 증강 방법을 통해 개선이 필요합니다.
+## 📊 인사이트
+### SMOTE 기법으로 데이터 불균형 해결 시, 오히려 F1 SCORE가 하락하는 이유?
+![SMOTE 기법](https://github.com/helloju817/LS_Construction-machinery-oil-Classification/assets/76280200/9c47c85a-c7d6-47e2-af45-4dc2aa596668)
+
+### 이상치 처리 전후 모델링 결과
+![이상치 처리 결과](https://github.com/helloju817/LS_Construction-machinery-oil-Classification/assets/76280200/1382b1f6-6d9b-4c71-a22f-cb5429415360)
+
+### 모델링 결론
+- **LightGBM (Light Gradient Boosting Machine)**: 경량화된 그래디언트 부스팅 모델
+- **SVM (Support Vector Machine)**: 고차원 공간에서 최적의 초평면을 찾는 분류 모델
+
+컴포넌트 1, 2, 3은 LightGBM을 사용하며, 4는 SVM을 사용하여 모델링을 진행하였습니다.
+
+## 📈 프로젝트 결론: F1 SCORE
+- **COMPONENT1**: 0.7097
+- **COMPONENT2**: 0.7255
+- **COMPONENT3**: 0.6634
+- **COMPONENT4**: 0.4880 
+
+부품별로 데이터를 나눴을 때, COMPONENT4는 데이터 수가 현저히 적어 정확도 저하가 발생했습니다. 향후 데이터 수집 및 증강 방법을 통해 개선이 필요합니다.
 
 ## 🚀 앞으로 보완할 점 및 느낀 점
-Shapley 값은 설명 가능한 XAI(eXplainable AI)의 대표적인 방법 중 하나입니다. Shapley 값을 이용하면 모델의 예측 결과에 대한 각 특성(feature)의 기여도를 이해할 수 있습니다.          
-- 알루미늄(AL): 알루미늄 수치가 높수록 불량률이 증가합니다. 따라서, COMPONENT1의 경우 알루미늄의 농도를 51.60 ~ 86.00상에 오일 이상이 100% 발생, COMPONENT2는 알루미늄 농도가 67.20 ~ 84.00사이에 오일 이상이 100% 발생, COMPONENT3은 58.20 ~ 97.00 사이에 오일 이상이 100% 존재하므로 오일을 신속히 교체해야한다. 
-<br>
+### Shapley 값 활용
+Shapley 값은 설명 가능한 AI(eXplainable AI)의 대표적인 방법 중 하나로, 모델의 예측 결과에 대한 각 특성(feature)의 기여도를 이해할 수 있습니다.
+**알루미늄(AL)**: 알루미늄 수치가 높을수록 불량률이 증가합니다.
+| Component | 알루미늄 농도 범위 | 오일 이상 발생률 |
+|------------|-----------------|-----------------|
+| COMPONENT1 | 51.60 ~ 86.00   | 100%            |
+| COMPONENT2 | 67.20 ~ 84.00   | 100%            |
+| COMPONENT3 | 58.20 ~ 97.00   | 100%            |
+- 정리된 표를 보면 특정 알루미늄 농도 범위에서 오일 이상이 100% 발생하므로 이 경우, 오일을 신속히 교체해야 합니다.
+
 ### 1. 전공자와 비전공자 간 도메인 지식 격차 해소
 - 1:1 멘토링을 통해 전공자와 비전공자 간 도메인 지식 격차를 줄였습니다.
 - 노션과 슬랙을 통한 공유 세션으로 적극적인 협업을 진행했습니다.
-- 
+
 ### 2. 모델링 과정에서의 도전과 해결
 - 모델링 초기 단계에서 SMOTE 기법을 적용하는 과정에서 과적합이 발생해 시행착오를 겪었습니다.
 - 추가 자료 분석과 적극적인 질의응답을 통해 모델을 재학습하여 문제를 해결했습니다.
 
 ### 3. 데이터 시각화 및 대시보드 구축
-- 분석에서 그치지 않고, Streamlit을 통한 대시보드를 구축하였습니다.
+- 분석에서 그치지 않고, Streamlit을 통한 대시보드를 구축하였습니다. 
 - 이에 대한 코드는 [여기서 확인 가능합니다](https://github.com/helloju817/ls_dashboard).
-    
+
 [Back to top](#top)
 
 ## 📅 빅데이터 교육 프로젝트
 (2024/02 ~ 2024/06)
 
-
+---
