@@ -3,7 +3,7 @@
 # 🏆 프로젝트: LS 건설기계 오일 상태 분류
 
 LS 빅데이터 교육과정에서 진행한 건설기계 오일 상태 분류 프로젝트 최종 결과물입니다. 본 프로젝트에서는 AutoML을 통해 우수한 모델을 찾고 이에 따른 Feature importance를 확인해 상위 20개를 선택하여 집중 분석하였습니다.
-- Streamlit을 통한 대시보드를 구축하였습니다. 이에 대한 코드는 [여기서 확인 가능합니다](https://github.com/helloju817/LS_DashBoard).
+- Streamlit을 통한 대시보드를 구축하였습니다. 이에 대한 코드는 다음과 같습니다.
 - https://github.com/helloju817/LS_DashBoard
 
 ## 📌 프로젝트 설명
